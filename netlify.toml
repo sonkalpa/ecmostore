@@ -1,11 +1,13 @@
 [build]
-  command = "npm run build"
+  command = "npm install && npm run build"
   publish = ".next"
 
 [build.environment]
   NEXT_USE_NETLIFY_EDGE = "true"
   NEXT_PRIVATE_TARGET = "server"
-  NODE_VERSION = "18"
+  NODE_VERSION = "18.17.0"
+  NPM_VERSION = "9.6.7"
+  NPM_FLAGS = "--no-optional --no-audit --no-fund"
   PYTHON_VERSION = "3.8"
   GO_IMPORT_PATH = ""
   HUGO_VERSION = "0.0"
@@ -14,4 +16,26 @@
   package = "@netlify/plugin-nextjs"
 
 [functions]
-  node_bundler = "esbuild" 
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true 
