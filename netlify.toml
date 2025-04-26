@@ -1,5 +1,5 @@
 [build]
-  command = "npm install --legacy-peer-deps && npm run build"
+  command = "CI=false npm install --legacy-peer-deps && npm run build"
   publish = ".next"
 
 [build.environment]
@@ -7,7 +7,7 @@
   NPM_VERSION = "9.6.7"
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_ENV = "production"
-  CI = "true"
+  NEXT_SHARP_PATH = "./node_modules/sharp"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

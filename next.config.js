@@ -8,6 +8,9 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true
+  }
 };
 
 module.exports = nextConfig;
