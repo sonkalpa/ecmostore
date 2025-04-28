@@ -3,13 +3,19 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['images.unsplash.com'],
-  },
-  experimental: {
-    optimizeCss: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com'
+      }
+    ]
   },
   eslint: {
     ignoreDuringBuilds: true
+  },
+  webpack: (config) => {
+    config.resolve.modules.push(process.cwd() + '/node_modules');
+    return config;
   }
 };
 
